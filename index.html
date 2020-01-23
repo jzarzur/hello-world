@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <title>Processing.JS inside Webpages: Template</title> 
+  </head>
+  <body>
+	<!--This draws the canvas on the webpage -->
+    <canvas id="mycanvas"></canvas> 
+  </body>
+ 
+  <!-- Include the processing.js library -->
+  <!-- See https://khanacademy.zendesk.com/hc/en-us/articles/202260404-What-parts-of-ProcessingJS-does-Khan-Academy-support- for differences -->
+  <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+  <script>
+  var programCode = function(processingInstance) {
+    with (processingInstance) {
+      size(400, 400); 
+      frameRate(30);
+        
+      // Paste code from Khan Academy here:
+      var bodyX =65;
+var bodyY = 334;
+
+var bodySize =40;
+var headSize= 37/37*bodySize;
+var mouthSize= 1/7* bodySize;
+var eyeSize= 11/37*bodySize;
+var pupilSize=13/74*bodySize;
+
+var feetW = bodySize*3/14;
+var feetH = bodySize*21/70;
+var feetY = bodyY+22/35*bodySize;
+var headX= bodyX+1/1*bodySize;
+
+
+var imageX=200;
+var imageY=321; 
+var imageW=50;
+var imageH=50;
+
+//var antennaSize=bodySize-62*bodySize-47;
+var antennaW=bodySize*4/35;
+var antennaH= bodySize*23/70;
+var antennaY= bodyY-39/70*bodySize;
+
+var skySize= 280;
+
+smooth();
+
+draw= function() {
+ 
+    background(168, 254, 255);
+   
+     noStroke();    
+    //sky
+    fill(255, 255, 255);
+    ellipse(-20,25,skySize,skySize);
+    ellipse(214,11,skySize,skySize);
+    ellipse(350,-15,skySize,skySize);
+    fill(250, 207, 37);
+    ellipse(345,70,50,50);
+    
+    //body 3
+    fill(52, 224, 9);
+    ellipse(bodyX, bodyY, bodySize, bodySize);
+    //body 2
+    ellipse(bodyX-1/1*bodySize, bodyY, bodySize, bodySize);
+    //body 1
+    ellipse(bodyX-2/1*bodySize, bodyY, bodySize, bodySize);
+    //head
+    fill(252, 38, 98);
+    ellipse(headX, bodyY, headSize, headSize);
+    //mouth
+    fill(240, 221, 240);
+    ellipse(bodyX + 9/7*bodySize, bodyY +3/14*bodySize, mouthSize, mouthSize);
+    
+    //feet body 3
+    fill(3, 3, 3);
+    ellipse(bodyX-1/7*bodySize,feetY, feetW,feetH);
+    fill(3, 3, 3);
+    ellipse(bodyX+1/7*bodySize, feetY, feetW,feetH);
+    //feet body 2
+    fill(3, 3, 3);
+    ellipse(bodyX-8/7*bodySize, feetY, feetW,feetH);
+    fill(3, 3, 3);
+    ellipse(bodyX-6/7*bodySize, feetY, feetW,feetH);
+    //feet body 1
+    fill(3, 3, 3);
+    ellipse(bodyX-15/7*bodySize, feetY, feetW,feetH);
+    fill(3, 3, 3);
+    ellipse(bodyX-13/7*bodySize, feetY, feetW,feetH);
+    
+    //antenna 1
+    fill(0, 0, 0);
+    ellipse(headX-4/35*bodySize, antennaY, antennaW, antennaH);
+    //antena 2
+    fill(3, 3, 3);
+    ellipse(headX+1/14*bodySize, antennaY, antennaW, antennaH);
+    
+    //eye
+    stroke(0, 0, 0);
+    strokeWeight(eyeSize);
+    point(bodyX+8/7*bodySize, bodyY-1/7*bodySize);
+    //pupil
+    stroke(255, 255, 255);
+    strokeWeight(pupilSize);
+    point(bodyX+41/35*bodySize, bodyY-1/7*bodySize);
+    
+    //grass
+    noStroke();
+    fill(53, 168, 47);
+    rect(0,365,400,50);
+    
+    bodyX+=1/2;
+    imageX+=1/3;
+    headX+=1/2;
+    //antennaH+=3;
+    //antennaSize+=1/2;
+    //headSize+=1;
+    
+    mouthSize+=1/45;
+   //pupilSize+=1;
+   //eyeSize+=1;
+};
+
+    }};
+
+  // Get the canvas that ProcessingJS will use
+  var canvas = document.getElementById("mycanvas"); 
+  // Pass the function to ProcessingJS constructor
+  var processingInstance = new Processing(canvas, programCode); 
+  </script>
+</html>
